@@ -36,6 +36,19 @@ app.get('/list', (req, res) => {
     })
 })
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log('app running')
+app.delete('/rooms/:mobile', (req, res) => {
+    db.run(`DELETE FROM ranqi WHERE mobile=?`, req.params.mobile, function (err) {
+        if (err) {
+            return console.error(err.message)
+        }
+
+        res.send(`delete record in DB for ${req.params.mobile}`)
+    })
+})
+
+
+let port = process.env.PORT || 3000
+
+app.listen(port, function () {
+    console.log(`app running on port ${port}`)
 })
