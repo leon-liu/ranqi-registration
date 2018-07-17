@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7号楼业主燃气开通登记</title>
+    <style>
+        form>input {
+            display: block;
+            margin: 20px 2px;
+        }
+
+        form > input, select {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>开通燃气业主请填写如下信息</h2>
+    <form action="/rooms" method="POST">
+        <input type="text" placeholder="姓名" name="name" required />
+        <input type="text" placeholder="电话" name="mobile" required />
+        <input type="text" placeholder="楼号" name="building_no" value="7" disabled/>
+        <select name="department_no" id="department_no" required>
+            <option value="">单元号</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+        <!-- <input type="text" placeholder="单元号" name="department_no" /> -->
+        <input type="text" placeholder="门牌号" name="floor_no" required />
+        <button type="submit">提交</button>
+    </form>
+
+    <h2>已登记业主信息</h2>
+    <ul>
+        <% for(var i=0; i<rooms.length; i++) {%>
+            <li>
+                <%= rooms[i].building_no %>-
+                    <%= rooms[i].department_no %>-
+                        <%= rooms[i].floor_no %>
+            </li>
+            <% } %>
+    </ul>
+</body>
+
+</html>
