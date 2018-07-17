@@ -36,6 +36,6 @@ app.get('/list', (req, res) => {
     })
 })
 
-app.listen(3000, function () {
-    console.log('listening on 3000')
+app.listen(process.env.PORT || 3000, function () {
+    console.log('app running')
 })
